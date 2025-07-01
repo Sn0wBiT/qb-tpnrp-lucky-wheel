@@ -26,7 +26,7 @@ function RandomPrize()
     -- Find the prize using binary search for efficiency
     for i, prize in ipairs(CUMULATIVE_PRIZES) do
         if randomValue <= prize.cumulativeProb then
-            return prize.prizeIndex
+            return prize
         end
     end
     

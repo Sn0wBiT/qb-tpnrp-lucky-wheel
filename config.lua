@@ -5,16 +5,14 @@ CONFIG.onlyOnePlayerRollAtTime = true -- Only one player can roll the wheel at a
 
 --- Wheel info
 CONFIG.wheelInfo = {
-    rollPosition = {x = 948.39, y = 62.14, z = 75.99},
-    baseWheelPos = {x = 948.5, y = 63.37, z = 75.01},
-    wheelPos = {x = 949.02, y = 63.05, z = 75.99},
-    wheelHeading = 90.0,
-    baseWheelHeading = 58.32,
+    rollPosition = {x = 1109.86, y = 229.07, z = -49.64},
+    wheelPos = {x = 1111.05, y = 229.85, z = -50.37},
+    wheelHeading = 0.0
 }
 
 --- Car prize display
 CONFIG.carPrizeDisplay = {
-    pos = {x = 953.7, y = 70.08, z = 75.23},
+    pos = {x = 1100.58, y = 219.81, z = -48.75},
     carModel = 't20',
     heading = 90.0,
     rotationSpeed = 18, -- degrees per second (adjust as needed)

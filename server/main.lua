@@ -4,7 +4,7 @@ local isRoll = false
 --- Roll the wheel
 ---@param source number
 ---@param cb function Callback function
-QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:doRoll', function(source, cb)
+QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(source, cb)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     -- Player not exist
@@ -42,7 +42,6 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:doRoll', function(source, 
     end
     -- Random prize
     local prize = RandomPrize()
-    print("Prize index: " .. prize.prizeIndex)
     
     -- Timeout for prize
     SetTimeout(CONFIG.rollTime, function()
