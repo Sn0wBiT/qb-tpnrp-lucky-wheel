@@ -16,6 +16,7 @@ function PlayWheelAnim(prizeIndex)
         print("Wheel is already spinning!")
         return false
     end
+    -- PlaySoundFrontend(-1, "Spin_Start", "dlc_vw_casino_lucky_wheel_sounds", true)
     
     IsRolling = true
     
@@ -29,6 +30,10 @@ function PlayWheelAnim(prizeIndex)
         -- Calculate target angle (18 degrees per segment for 20 prizes)
         local targetAngle = (prizeIndex - 1) * 18
         local totalRotation = (360 * 8) + targetAngle -- 8 full rotations + target
+        
+        -- Track rotation for sound triggers
+        local lastSoundAngle = math.floor(initialRotation / 18) * 18
+        local totalRotationCompleted = 0
         
         -- Easing function for smooth acceleration/deceleration
         local function easeInOutQuad(t)
@@ -47,6 +52,18 @@ function PlayWheelAnim(prizeIndex)
             
             -- Calculate current rotation (relative to initial rotation)
             local currentRotation = initialRotation - (easedProgress * totalRotation)
+            local currentRotationDegrees = currentRotation % 360
+            if currentRotationDegrees < 0 then currentRotationDegrees = currentRotationDegrees + 360 end
+            
+            -- Check if we've passed another 18-degree segment
+            local currentSegment = math.floor(currentRotationDegrees / 18)
+            local lastSegment = math.floor(lastSoundAngle / 18)
+            
+            if currentSegment ~= lastSegment then
+                -- Play the tick sound when passing each segment
+                PlaySoundFrontend(-1, "Spin_Single_Ticks", "dlc_vw_casino_lucky_wheel_sounds", true)
+                lastSoundAngle = currentSegment * 18
+            end
             
             -- Apply rotation (use 2 for interpolation to smooth out changes)
             SetEntityRotation(wheelObj, 0.0, currentRotation, 0.0, 2, true)

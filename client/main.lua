@@ -2,7 +2,6 @@ QBCore = exports["qb-core"]:GetCoreObject()
 IsRolling = false
 
 RegisterNetEvent('qb-tpnrp-lucky-wheel:client:doRoll', function(prizeIndex)
-    print('qb-tpnrp-lucky-wheel:doRoll', prizeIndex)
     PlayWheelAnim(prizeIndex)
 end)
 
@@ -29,32 +28,56 @@ function DoRoll()
         Citizen.Wait(100)
     end
 
-    -- Play roll animation
-    local animTime = QBCore.Functions.PlayAnim(animLib, animName, false, 0)
-    print('animTime', animTime)
+    TaskPlayAnim(playerPed, animLib, animName, 8.0, -8.0, -1, 0, 0, false, false, false)
     while IsEntityPlayingAnim(playerPed, animLib, animName, 3) do
         Citizen.Wait(0)
         DisableAllControlActions(0)
     end
-    -- Play arm raised idle animation
-    QBCore.Functions.PlayAnim(animLib, 'enter_to_armraisedidle', false, 0)
+    -- Play enter to arm raised idle animation
+    TaskPlayAnim(playerPed, animLib, 'enter_to_armraisedidle', 8.0, -4.0, -1, 0, 0, false, false, false)
     while IsEntityPlayingAnim(playerPed, animLib, 'enter_to_armraisedidle', 3) do
         Citizen.Wait(0)
         DisableAllControlActions(0)
     end
-    print('Call doRoll')
+    
     QBCore.Functions.TriggerCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(cbResult)
-        print('qb-tpnrp-lucky-wheel:server:doRoll', json.encode(cbResult))
         if not cbResult.isSuccess then
             QBCore.Functions.Notify(cbResult.message, 'error')
             return
         end
+        -- Play arm raised idle to spinning idle high animation
+        TaskPlayAnim(playerPed, animLib, 'armraisedidle_to_spinningidle_high', 4.0, -4.0, -1, 0, 0, false, false, false)
         -- Only play wheel animation when flag is false (onlyOnePlayerRollAtTime)
         -- Everyone can roll there own wheel
         if not CONFIG.onlyOnePlayerRollAtTime then
             PlayWheelAnim()
         end
+        while IsEntityPlayingAnim(playerPed, animLib, 'armraisedidle_to_spinningidle_high', 3) do
+            Citizen.Wait(0)
+            DisableAllControlActions(0)
+        end
+        Citizen.Wait(2000)
+
+        TaskPlayAnim(playerPed, animLib, 'spinningidle_high', 8.0, -8.0, -1, 0, 0, false, false, false)
+        
+
+        local animWinName = 'win'
+        for _, prizeInfo in ipairs(CONFIG.prize) do
+            if prizeInfo.prizeIndex == cbResult.prizeIndex then
+                animWinName = prizeInfo.anim_win_name
+                break
+            end
+        end
+        Citizen.Wait(CONFIG.rollTime - 2000)
+        PlaySoundFrontend(-1, "Win", "dlc_vw_casino_lucky_wheel_sounds", true)
+        -- Play win animation
+        TaskPlayAnim(playerPed, animLib, animWinName, 8.0, -8.0, -1, 0, 0, false, false, false)
+        while IsEntityPlayingAnim(playerPed, animLib, animWinName, 3) do
+            Citizen.Wait(0)
+            DisableAllControlActions(0)
+        end
+        -- END
     end)
 
-    QBCore.Functions.PlayAnim(animLib, 'armraisedidle_to_spinningidle_high', false, 0)
+    
 end

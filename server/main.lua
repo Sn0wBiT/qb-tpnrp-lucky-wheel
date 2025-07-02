@@ -63,6 +63,7 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
 
     cb({
         isSuccess = true,
+        prizeIndex = prize.prizeIndex,
         message = "Vòng quay đã được bắt đầu!",
     })
 end)
