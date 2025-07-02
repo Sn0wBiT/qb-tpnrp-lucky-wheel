@@ -16,7 +16,6 @@ function PlayWheelAnim(prizeIndex)
         print("Wheel is already spinning!")
         return false
     end
-    -- PlaySoundFrontend(-1, "Spin_Start", "dlc_vw_casino_lucky_wheel_sounds", true)
     
     IsRolling = true
     
