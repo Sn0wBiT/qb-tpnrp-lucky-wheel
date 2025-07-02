@@ -25,17 +25,17 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
         return
     end
     local money = Player.PlayerData.money['cash']
-    if money < CONFIG.rollPrize then
+    if money < CONFIG.rollPrice then
         -- Player don't have enough money
         -- TriggerClientEvent("esx_tpnrp_luckywheel:rollFinished", -1)
         cb({
             isSuccess = false,
-            message = "Bạn không có đủ tiền trong ví để chơi! Yêu cầu " .. CONFIG.rollPrize .. "$ cho 1 lần quay!",
+            message = "Bạn không có đủ tiền trong ví để chơi! Yêu cầu " .. CONFIG.rollPrice .. "$ cho 1 lần quay!",
         })
         return
     end
     -- Remove player cash
-    Player.Functions.RemoveMoney('cash', CONFIG.rollPrize, 'lucky-wheel')
+    Player.Functions.RemoveMoney('cash', CONFIG.rollPrice, 'lucky-wheel')
     -- Set isRoll to true if only one player can roll the wheel at a time
     if CONFIG.onlyOnePlayerRollAtTime then
         isRoll = true

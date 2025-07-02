@@ -85,7 +85,7 @@ function InitWheel()
         }, {
             options = {
                 {
-                    label = 'Quay (' .. CONFIG.rollPrize .. '$)',
+                    label = 'Quay (' .. CONFIG.rollPrice .. '$)',
                     icon = 'fa-solid fa-wheel',
                     action = function()
                         DoRoll()
