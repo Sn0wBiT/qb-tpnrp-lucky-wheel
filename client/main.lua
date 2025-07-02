@@ -20,9 +20,18 @@ function DoRoll()
     local animName = 'enter_right_to_baseidle'
     -- Ped goto roll pos
     TaskGoStraightToCoord(playerPed, CONFIG.wheelInfo.rollPosition.x, CONFIG.wheelInfo.rollPosition.y, CONFIG.wheelInfo.rollPosition.z, 1.0, -1, 34.52, 0.0)
-    -- Play roll animation
-    QBCore.Functions.PlayAnim(animLib, animName, false, 0)
+    local isMoved = false
+    while not isMoved do
+        local coords = GetEntityCoords(playerPed)
+        if coords.x >= (CONFIG.wheelInfo.rollPosition.x - 0.01) and coords.x <= (CONFIG.wheelInfo.rollPosition.x + 0.01) and coords.y >= (CONFIG.wheelInfo.rollPosition.y - 0.01) and coords.y <= (CONFIG.wheelInfo.rollPosition.y + 0.01) then
+            isMoved = true
+        end
+        Citizen.Wait(100)
+    end
 
+    -- Play roll animation
+    local animTime = QBCore.Functions.PlayAnim(animLib, animName, false, 0)
+    print('animTime', animTime)
     while IsEntityPlayingAnim(playerPed, animLib, animName, 3) do
         Citizen.Wait(0)
         DisableAllControlActions(0)
@@ -33,7 +42,7 @@ function DoRoll()
         Citizen.Wait(0)
         DisableAllControlActions(0)
     end
-
+    print('Call doRoll')
     QBCore.Functions.TriggerCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(cbResult)
         print('qb-tpnrp-lucky-wheel:server:doRoll', json.encode(cbResult))
         if not cbResult.isSuccess then
