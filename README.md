@@ -1,6 +1,6 @@
 # qb-tpnrp-lucky-wheel
 
-A **Lucky Wheel** script for the **Diamond Casino** built on top of **QB-Core**. Inspired by the in-game casino feature, this version is tailored for servers running **Game Build 3407 (#DLC Agents of Sabotage)**.
+A **Lucky Wheel** script for the **Diamond Casino**. Inspired by the in-game casino feature, this version is tailored for servers running QB-Core and **Game Build 3407 (#DLC Agents of Sabotage)**.
 
 ---
 
