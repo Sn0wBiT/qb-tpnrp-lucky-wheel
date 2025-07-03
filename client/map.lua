@@ -6,7 +6,6 @@ function SpawnDisplayCar()
         displayCarObj = vehicle
         SetEntityAsMissionEntity(displayCarObj, true, true)
         SetVehicleHasBeenOwnedByPlayer(displayCarObj, true)
-        SetVehicleOnGroundProperly(displayCarObj)
         FreezeEntityPosition(displayCarObj, true)
         SetEntityInvincible(displayCarObj, true)
         SetVehicleDoorsLocked(displayCarObj, 2)
