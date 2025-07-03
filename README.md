@@ -49,7 +49,12 @@ CONFIG.prize
    git clone https://github.com/Sn0wBiT/qb-tpnrp-lucky-wheel.git
    ```
 
-2. Add the resource to your `server.cfg`:
+2. Export GeneratePlate function in `qb-vehicleshop/server.lua`
+   ```bash
+   exports('GeneratePlate', GeneratePlate)
+   ```
+
+3. Add the resource to your `server.cfg`:
    ```cfg
    ensure qb-tpnrp-lucky-wheel
    ```
