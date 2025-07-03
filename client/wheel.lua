@@ -1,5 +1,8 @@
 local wheelObj = nil
 
+---Play wheel animation
+---@param prizeIndex number
+---@return boolean isRolled return state of the wheel
 function PlayWheelAnim(prizeIndex)
     if wheelObj == nil then
         return false
@@ -82,6 +85,7 @@ function PlayWheelAnim(prizeIndex)
     return true
 end
 
+---Create wheel model and assign target menu
 function InitWheel()
     local model = GetHashKey('vw_prop_vw_luckywheel_02a')
 
@@ -113,9 +117,22 @@ function InitWheel()
     end)
 end
 
+---On player logged in
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
-    -- On player logged in
     InitWheel()
+end)
+
+---Reward player with a vehicle
+---@param netId number
+---@param plate string
+RegisterNetEvent('qb-tpnrp-lucky-wheel:client:rewardVehicle', function(netId, plate)
+    local veh = NetToVeh(netId)
+    -- Set vehicle fuel
+    exports['LegacyFuel']:SetFuel(veh, 100)
+    SetVehicleNumberPlateText(veh, plate)
+    SetEntityHeading(veh, CONFIG.carPrizeDisplay.rewardVehicleHeading)
+    TriggerEvent('vehiclekeys:client:SetOwner', plate)
+    TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)

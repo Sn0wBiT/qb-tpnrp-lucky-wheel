@@ -34,3 +34,29 @@ function RandomPrize()
     return CUMULATIVE_PRIZES[#CUMULATIVE_PRIZES]
 end
 
+function GivePlayerCar(QBPlayer, carName)
+    local src = QBPlayer.PlayerData.source
+    local plate = exports['qb-vehicleshop']:GeneratePlate()
+    if not carName then
+        print('ERROR: Vehicle not found')
+        return
+    end
+    SetTimeout(0, function()
+        MySQL.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, garage, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', {
+            QBPlayer.PlayerData.license,
+            QBPlayer.PlayerData.citizenid,
+            carName,
+            GetHashKey(carName),
+            '{}',
+            plate,
+            'pillboxgarage',
+            0
+        })
+    end)
+
+    local veh = QBCore.Functions.SpawnVehicle(source, carName, CONFIG.carPrizeDisplay.rewardVehiclePosition, false)
+    local vehNetId = NetworkGetNetworkIdFromEntity(veh)
+    -- Send reward to player
+    TriggerClientEvent('qb-tpnrp-lucky-wheel:client:rewardVehicle', src, vehNetId, plate)
+    TriggerClientEvent('QBCore:Notify', src, 'Bạn đã nhận được chiếc xe ' .. carName, 'success')
+end

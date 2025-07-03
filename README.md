@@ -19,7 +19,9 @@ A **Lucky Wheel** script for the **Diamond Casino** built on top of **QB-Core**.
 
 ## Requirements
 
+- [oxmysql](https://github.com/overextended/oxmysql)
 - [qb-core](https://github.com/qbcore-framework/qb-core)
+- [qb-vehicleshop](https://github.com/qbcore-framework/qb-vehicleshop)
 - Game build **3407** or higher (DLC: *Agents of Sabotage*)
 
 ---

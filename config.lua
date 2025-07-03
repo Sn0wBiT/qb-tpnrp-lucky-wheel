@@ -16,6 +16,8 @@ CONFIG.carPrizeDisplay = {
     carModel = 't20',
     heading = 90.0,
     rotationSpeed = 18, -- degrees per second (adjust as needed)
+    rewardVehiclePosition = {x = 1100.58, y = 219.81, z = -48.75},
+    rewardVehicleHeading = 0.0,
 }
 
 -- Prize configuration table with probabilities

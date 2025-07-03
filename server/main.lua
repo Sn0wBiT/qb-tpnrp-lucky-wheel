@@ -53,7 +53,8 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
             Player.Functions.AddItem(prizeInfo.name, prizeInfo.amount, nil, prizeInfo.info, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
             TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[prizeInfo.name], 'add')
         elseif prizeInfo.type == 'car' then
-            -- TODO: Give player a vehicle at garage
+            -- Give player a vehicle at garage
+            GivePlayerCar(Player, prizeInfo.name)
         end
     end)
 
