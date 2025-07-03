@@ -35,7 +35,7 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
         return
     end
     -- Remove player cash
-    Player.Functions.RemoveMoney('cash', CONFIG.rollPrice, 'lucky-wheel')
+    Player.Functions.RemoveMoney('cash', CONFIG.rollPrice, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
     -- Set isRoll to true if only one player can roll the wheel at a time
     if CONFIG.onlyOnePlayerRollAtTime then
         isRoll = true
@@ -48,16 +48,17 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
         isRoll = false
         local prizeInfo = prize.prizeInfo
         if prizeInfo.type == 'money' then
-            Player.Functions.AddMoney('cash', prizeInfo.amount, 'lucky-wheel')
+            Player.Functions.AddMoney('cash', prizeInfo.amount, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
         elseif prizeInfo.type == 'inventory_item' then
             Player.Functions.AddItem(prizeInfo.name, prizeInfo.amount, nil, prizeInfo.info, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
+            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[prizeInfo.name], 'add')
         elseif prizeInfo.type == 'car' then
             -- TODO: Give player a vehicle at garage
         end
     end)
 
     if CONFIG.onlyOnePlayerRollAtTime then
-        -- Send to all players that the wheel is rolling with a prizeIndex
+        -- Send to all players (including current player) that the wheel is rolling with a prizeIndex
         TriggerClientEvent("qb-tpnrp-lucky-wheel:client:doRoll", -1, prize.prizeIndex)
     end
 

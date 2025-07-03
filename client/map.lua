@@ -1,9 +1,5 @@
 -- This is used for render prize car, wheel and player interact
 local displayCarObj = nil
-local _isShowCar = false
-local _wheelHeading = 90.0
-local _vehPos = {x = 953.7, y = 70.08, z = 75.23}
-
 
 function SpawnDisplayCar()
     QBCore.Functions.SpawnVehicle(CONFIG.carPrizeDisplay.carModel, function(vehicle)
