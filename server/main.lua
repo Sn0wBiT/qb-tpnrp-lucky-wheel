@@ -27,7 +27,6 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
     local money = Player.PlayerData.money['cash']
     if money < CONFIG.rollPrice then
         -- Player doesn't have enough money
-        -- TriggerClientEvent("esx_tpnrp_luckywheel:rollFinished", -1)
         cb({
             isSuccess = false,
             message = "Bạn không có đủ tiền trong ví để chơi! Yêu cầu " .. CONFIG.rollPrice .. "$ cho 1 lần quay!",

@@ -30,7 +30,7 @@ CONFIG.prize = {
             type = 'car',
             name = CONFIG.carPrizeDisplay.carModel,
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     
     -- Rare prizes  
@@ -43,7 +43,7 @@ CONFIG.prize = {
             amount = 1,
             info = {}
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 5,      -- 1.0% - $100,000
@@ -53,7 +53,7 @@ CONFIG.prize = {
             name = 'cash',
             amount = 100000
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     
     -- Uncommon prizes
@@ -65,7 +65,7 @@ CONFIG.prize = {
             name = 'cash',
             amount = 10000
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 4,     -- 2.25% - Money
@@ -75,7 +75,7 @@ CONFIG.prize = {
             name = 'cash',
             amount = 6000
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 8,     -- 2.25% - Money  
@@ -85,7 +85,7 @@ CONFIG.prize = {
             name = 'cash',
             amount = 6000
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 11,    -- 2.25% - Money
@@ -95,7 +95,7 @@ CONFIG.prize = {
             name = 'cash',
             amount = 6000
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 16,    -- 2.25% - Money
@@ -105,7 +105,7 @@ CONFIG.prize = {
             name = 'cash',
             amount = 6000
         },
-        anim_win_name = 'win_big',
+        anim_win_name = 'win_big', -- anim_win_name only have 'win_big' or 'win'
     },
     
     -- Common prizes
@@ -117,7 +117,7 @@ CONFIG.prize = {
             name = 'firework1',
             amount = 5
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 9,     -- 3.75%
@@ -127,7 +127,7 @@ CONFIG.prize = {
             name = 'firework2',
             amount = 5
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 13,    -- 3.75%
@@ -137,7 +137,7 @@ CONFIG.prize = {
             name = 'firework3',
             amount = 5
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 17,    -- 3.75%
@@ -147,7 +147,7 @@ CONFIG.prize = {
             name = 'firework4',
             amount = 5
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     
     -- More common prizes
@@ -159,7 +159,7 @@ CONFIG.prize = {
             name = 'painkillers',
             amount = 10
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 6,      -- 4.0%
@@ -169,7 +169,7 @@ CONFIG.prize = {
             name = 'ifaks',
             amount = 10
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 10,     -- 4.0%
@@ -179,7 +179,7 @@ CONFIG.prize = {
             name = 'painkillers',
             amount = 10
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 14,     -- 4.0%
@@ -189,7 +189,7 @@ CONFIG.prize = {
             name = 'firstaid',
             amount = 10
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 18,     -- 4.0%
@@ -199,7 +199,7 @@ CONFIG.prize = {
             name = 'bandage',
             amount = 10
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     
     -- Most common prizes
@@ -211,7 +211,7 @@ CONFIG.prize = {
             name = 'cloth_undershirts_white',
             amount = 1
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 15,     -- 9.0%
@@ -221,7 +221,7 @@ CONFIG.prize = {
             name = 'casinochips',
             amount = 500
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
     {
         prizeIndex = 20,    -- 41.0% - Most common fallback prize
@@ -231,6 +231,6 @@ CONFIG.prize = {
             name = 'beer',
             amount = 100
         },
-        anim_win_name = 'win',
+        anim_win_name = 'win', -- anim_win_name only have 'win_big' or 'win'
     },
 }
