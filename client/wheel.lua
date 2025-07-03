@@ -35,7 +35,6 @@ function PlayWheelAnim(prizeIndex)
         
         -- Track rotation for sound triggers
         local lastSoundAngle = math.floor(initialRotation / 18) * 18
-        local totalRotationCompleted = 0
         
         -- Easing function for smooth acceleration/deceleration
         local function easeInOutQuad(t)

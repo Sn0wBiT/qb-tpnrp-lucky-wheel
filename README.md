@@ -20,8 +20,9 @@ A **Lucky Wheel** script for the **Diamond Casino** built on top of **QB-Core**.
 ## Requirements
 
 - [oxmysql](https://github.com/overextended/oxmysql)
-- [qb-core](https://github.com/qbcore-framework/qb-core)
-- [qb-vehicleshop](https://github.com/qbcore-framework/qb-vehicleshop)
+- [qb-core](https://github.com/qbcore-framework/qb-core) 
+- [qb-vehicleshop](https://github.com/qbcore-framework/qb-vehicleshop) GeneratePlate function (Can be replaced with your server function)
+- [qb-mechanicjob](https://github.com/qbcore-framework/qb-mechanicjob) SaveVehicleProps function (Can be replaced with your server function)
 - Game build **3407** or higher (DLC: *Agents of Sabotage*)
 
 ---
@@ -37,7 +38,7 @@ CONFIG.rollPrice = 500 -- Price to roll the wheel
 CONFIG.onlyOnePlayerRollAtTime = true -- Only one player can roll the wheel at a time (Other player have to wait)
 
 -- All prizes can be customized at
-CONFIG.prize
+CONFIG.prize -- (From 1 to 20) There are 20 prizes
 ```
 
 ---
