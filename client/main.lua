@@ -16,6 +16,7 @@ function DoRoll()
     if IsPedMale(playerPed) then
         animLib = 'anim_casino_a@amb@casino@games@lucky7wheel@male'
     end
+    QBCore.Functions.RequestAnimDict(animLib)
     local animName = 'enter_right_to_baseidle'
     -- Ped goes to roll position
     TaskGoStraightToCoord(playerPed, CONFIG.wheelInfo.rollPosition.x, CONFIG.wheelInfo.rollPosition.y, CONFIG.wheelInfo.rollPosition.z, 1.0, -1, 34.52, 0.0)
@@ -27,7 +28,6 @@ function DoRoll()
         end
         Citizen.Wait(100)
     end
-
     TaskPlayAnim(playerPed, animLib, animName, 8.0, -8.0, -1, 0, 0, false, false, false)
     while IsEntityPlayingAnim(playerPed, animLib, animName, 3) do
         Citizen.Wait(0)
@@ -39,7 +39,6 @@ function DoRoll()
         Citizen.Wait(0)
         DisableAllControlActions(0)
     end
-    
     QBCore.Functions.TriggerCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(cbResult)
         if not cbResult.isSuccess then
             QBCore.Functions.Notify(cbResult.message, 'error')
