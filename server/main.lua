@@ -7,7 +7,7 @@ local isRoll = false
 QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(source, cb)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    -- Player not exist
+    -- Player does not exist
     if not Player then
         cb({
             isSuccess = false,
@@ -26,7 +26,7 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
     end
     local money = Player.PlayerData.money['cash']
     if money < CONFIG.rollPrice then
-        -- Player don't have enough money
+        -- Player doesn't have enough money
         -- TriggerClientEvent("esx_tpnrp_luckywheel:rollFinished", -1)
         cb({
             isSuccess = false,
@@ -57,7 +57,7 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
     end)
 
     if CONFIG.onlyOnePlayerRollAtTime then
-        -- Send to all player that the wheel is rolling with a prizeIndex
+        -- Send to all players that the wheel is rolling with a prizeIndex
         TriggerClientEvent("qb-tpnrp-lucky-wheel:client:doRoll", -1, prize.prizeIndex)
     end
 

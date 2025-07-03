@@ -5,7 +5,7 @@ RegisterNetEvent('qb-tpnrp-lucky-wheel:client:doRoll', function(prizeIndex)
     PlayWheelAnim(prizeIndex)
 end)
 
---- Do roll function trigger by player who play rolling
+--- Do roll function triggered by player who is rolling
 function DoRoll()
     if IsRolling then
         return
@@ -17,7 +17,7 @@ function DoRoll()
         animLib = 'anim_casino_a@amb@casino@games@lucky7wheel@male'
     end
     local animName = 'enter_right_to_baseidle'
-    -- Ped goto roll pos
+    -- Ped goes to roll position
     TaskGoStraightToCoord(playerPed, CONFIG.wheelInfo.rollPosition.x, CONFIG.wheelInfo.rollPosition.y, CONFIG.wheelInfo.rollPosition.z, 1.0, -1, 34.52, 0.0)
     local isMoved = false
     while not isMoved do

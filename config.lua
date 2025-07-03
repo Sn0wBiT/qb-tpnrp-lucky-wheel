@@ -1,7 +1,7 @@
 CONFIG = {}
 CONFIG.rollTime = 12000 -- Time to wait for prize return
 CONFIG.rollPrice = 500 -- Price to roll the wheel
-CONFIG.onlyOnePlayerRollAtTime = true -- Only one player can roll the wheel at a time (Other player have to wait)
+CONFIG.onlyOnePlayerRollAtTime = true -- Only one player can roll the wheel at a time (Other players have to wait)
 
 --- Wheel info
 CONFIG.wheelInfo = {

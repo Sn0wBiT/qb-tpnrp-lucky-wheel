@@ -7,7 +7,7 @@ A **Lucky Wheel** script for the **Diamond Casino** built on top of **QB-Core**.
 ## Features
 
 - **Single Player Interaction**  
-  Option to **network the wheel** to ensure **only one player can roll at a time**. Others must wait their turn.
+  Option to **network the wheel** to ensure **only one player can roll at a time**. Other players must wait their turn.
 
 - **Best Prize Display**  
   The **T20 car** is shown at the prize display.
@@ -34,7 +34,7 @@ CONFIG.rollTime = 12000 -- Time to wait for prize return
 CONFIG.rollPrice = 500 -- Price to roll the wheel
 CONFIG.onlyOnePlayerRollAtTime = true -- Only one player can roll the wheel at a time (Other player have to wait)
 
--- All prize can be customize at
+-- All prizes can be customized at
 CONFIG.prize
 ```
 

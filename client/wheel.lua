@@ -93,7 +93,7 @@ function InitWheel()
         SetModelAsNoLongerNeeded(model)
         -- Display Car
         SpawnDisplayCar()
-        -- Add target zone
+        -- Add the target zone
         exports['qb-target']:AddCircleZone('lucky-wheel-target-zone', vector3(CONFIG.wheelInfo.rollPosition.x, CONFIG.wheelInfo.rollPosition.y, CONFIG.wheelInfo.rollPosition.z), 2.0,{
             name = 'lucky-wheel-target-zone',
             debugPoly = false,
