@@ -48,7 +48,7 @@ function DoRoll()
         -- Play arm raised idle to spinning idle high animation
         TaskPlayAnim(playerPed, animLib, 'armraisedidle_to_spinningidle_high', 4.0, -4.0, -1, 0, 0, false, false, false)
         -- Only play wheel animation when flag is false (onlyOnePlayerRollAtTime)
-        -- Everyone can roll there own wheel
+        -- Everyone can roll their own wheel
         if not CONFIG.onlyOnePlayerRollAtTime then
             PlayWheelAnim()
         end
