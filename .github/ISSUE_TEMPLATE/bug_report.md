@@ -26,4 +26,4 @@ If applicable, add screenshots to help explain your problem.
 ** Game version (please complete the following information):**
  - Windows version: [e.g. Windows 10]
  - Game build version [e.g. 3407 (#DLC Agents of Sabotage)]
-- QB-Core version [e.g. 1.3.0]
+ - QB-Core version [e.g. 1.3.0]
