@@ -49,8 +49,23 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
         if prizeInfo.type == 'money' then
             Player.Functions.AddMoney('cash', prizeInfo.amount, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
         elseif prizeInfo.type == 'inventory_item' then
-            Player.Functions.AddItem(prizeInfo.name, prizeInfo.amount, nil, prizeInfo.info, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
-            TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[prizeInfo.name], 'add')
+            local canAddItem = exports['qb-inventory']:CanAddItem(src, prizeInfo.name, prizeInfo.amount, true)
+            if canAddItem then
+                Player.Functions.AddItem(prizeInfo.name, prizeInfo.amount, nil, prizeInfo.info, 'qb-tpnrp-lucky-wheel:server:OnRollFinished')
+                TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[prizeInfo.name], 'add')
+            else
+                -- Can't add item to player inventory
+                -- Then create a drop (This is dangerous because other player can open and take it!)
+                -- TODO: send item to player via other method
+                local item = {
+                    name = prizeInfo.name,
+                    amount = prizeInfo.amount,
+                    info = prizeInfo.info,
+                    slot = 0,
+                }
+                -- Create drop item
+                exports['qb-inventory']:CreateDrop(src, item, false)
+            end
         elseif prizeInfo.type == 'car' then
             -- Give player a vehicle at garage
             GivePlayerCar(Player, prizeInfo.name)
