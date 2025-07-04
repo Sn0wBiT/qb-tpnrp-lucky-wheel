@@ -51,11 +51,59 @@ CONFIG.prize -- (From 1 to 20) There are 20 prizes
    ```
 
 2. Export GeneratePlate function in `qb-vehicleshop/server.lua`
-   ```bash
+   ```lua
    exports('GeneratePlate', GeneratePlate)
    ```
+3. Add this function at bottom of `qb-inventory/server/main.lua`
+   ```lua
+   ---Create Drop bag from 'source' position and heading
+    ---@param source number
+    ---@param item table
+    ---@param isOpen boolean
+    ---@return number dropId netId of drop item
+    function CreateDrop(source, item, isOpen)
+        local src = source
+        local isOpen = isOpen or true
+        local playerPed = GetPlayerPed(src)
+        local playerCoords = GetEntityCoords(playerPed)
+        local heading = GetEntityHeading(playerPed)
+        local distance = 1.0 -- meters in front
+        local x = playerCoords.x + (distance * math.sin(-heading * math.pi / 180.0))
+        local y = playerCoords.y + (distance * math.cos(-heading * math.pi / 180.0))
+        
+        local bag = CreateObjectNoOffset(Config.ItemDropObject, x, y, playerCoords.z, true, true, false)
+        local dropId = NetworkGetNetworkIdFromEntity(bag)
 
-3. Add the resource to your `server.cfg`:
+        local newDropId = 'drop-' .. dropId
+        local itemsTable = setmetatable({ item }, {
+            __len = function(t)
+                local length = 0
+                for _ in pairs(t) do length += 1 end
+                return length
+            end
+        })
+        if not Drops[newDropId] then
+            Drops[newDropId] = {
+                name = newDropId,
+                label = 'Drop',
+                items = itemsTable,
+                entityId = dropId,
+                createdTime = os.time(),
+                coords = playerCoords,
+                maxweight = Config.DropSize.maxweight,
+                slots = Config.DropSize.slots,
+                isOpen = isOpen
+            }
+            TriggerClientEvent('qb-inventory:client:setupDropTarget', -1, dropId)
+        else
+            table.insert(Drops[newDropId].items, item)
+        end
+
+        return dropId
+    end
+    exports('CreateDrop', CreateDrop)
+   ```
+4. Add the resource to your `server.cfg`:
    ```cfg
    ensure qb-tpnrp-lucky-wheel
    ```
