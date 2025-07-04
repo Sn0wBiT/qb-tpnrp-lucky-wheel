@@ -1,9 +1,9 @@
 CONFIG = {}
-CONFIG.rollTime = 12000 -- Time to wait for prize return
+CONFIG.rollTime = 12000 -- Time to wait for prize return (in milisecond)
 CONFIG.rollPrice = 500 -- Price to roll the wheel
 CONFIG.onlyOnePlayerRollAtTime = true -- Only one player can roll the wheel at a time (Other players have to wait)
 
---- Wheel info
+--- Wheel info [DONOT CHANGE THIS]
 CONFIG.wheelInfo = {
     rollPosition = {x = 1109.86, y = 229.07, z = -49.64},
     wheelPos = {x = 1111.05, y = 229.85, z = -50.37},
@@ -15,7 +15,7 @@ CONFIG.carPrizeDisplay = {
     pos = {x = 1100.58, y = 219.81, z = -48.75},
     carModel = 't20',
     heading = 90.0,
-    rotationSpeed = 18, -- degrees per second (adjust as needed)
+    rotationSpeed = 18, -- degrees per second (adjust as needed) (Car rotation speed)
     rewardVehiclePosition = {x = 1100.58, y = 219.81, z = -48.75},
     rewardVehicleHeading = 0.0,
 }
