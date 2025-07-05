@@ -111,9 +111,7 @@ CONFIG.prize -- (From 1 to 20) There are 20 prizes
 ---
 
 ## Screenshots / Demo
-
-*(Add some images or videos here if you have any to showcase the feature.)*
-
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1dXloRK-c_0/0.jpg)](https://www.youtube.com/watch?v=1dXloRK-c_0)
 ---
 
 ## License
