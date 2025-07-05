@@ -133,17 +133,3 @@ RegisterNetEvent('qb-tpnrp-lucky-wheel:client:rewardVehicle', function(netId, pl
     TriggerEvent('vehiclekeys:client:SetOwner', plate)
     TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
 end)
-
-AddEventHandler('onResourceStart', function(resourceName)
-    if resourceName == GetCurrentResourceName() then
-        InitWheel()
-    end
-end)
-
-AddEventHandler('onResourceStop', function(resource)
-	if resource == GetCurrentResourceName() then
-		if wheelObj ~= nil then
-            DeleteEntity(wheelObj)
-        end
-	end
-end)
