@@ -54,7 +54,7 @@ function GivePlayerCar(QBPlayer, carName)
         })
     end)
 
-    local veh = QBCore.Functions.SpawnVehicle(source, carName, CONFIG.carPrizeDisplay.rewardVehiclePosition, false)
+    local veh = QBCore.Functions.SpawnVehicle(src, carName, CONFIG.carPrizeDisplay.rewardVehiclePosition, false)
     local vehNetId = NetworkGetNetworkIdFromEntity(veh)
     -- Send reward to player
     TriggerClientEvent('qb-tpnrp-lucky-wheel:client:rewardVehicle', src, vehNetId, plate)
