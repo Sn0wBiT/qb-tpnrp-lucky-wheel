@@ -57,12 +57,10 @@ QBCore.Functions.CreateCallback('qb-tpnrp-lucky-wheel:server:doRoll', function(s
                 -- Can't add item to player inventory
                 -- Then create a drop (This is dangerous because other player can open and take it!)
                 -- TODO: send item to player via other method
-                local item = {
-                    name = prizeInfo.name,
-                    amount = prizeInfo.amount,
-                    info = prizeInfo.info,
-                    slot = 0,
-                }
+                local item = QBCore.Shared.Items[prizeInfo.name]
+                item.slot = 1
+                item.amount = prizeInfo.amount
+                item.inventory = 'other'
                 -- Create drop item
                 exports['qb-inventory']:CreateDrop(src, item, false)
             end
