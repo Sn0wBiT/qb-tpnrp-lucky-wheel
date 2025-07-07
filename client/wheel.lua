@@ -73,7 +73,8 @@ function PlayWheelAnim(prizeIndex)
             local waitTime = progress < 0.7 and 5 or 10
             Citizen.Wait(waitTime)
         end
-        
+        -- Play the final tick sound
+        PlaySoundFrontend(-1, "Spin_Single_Ticks", "dlc_vw_casino_lucky_wheel_sounds", true)
         -- Ensure final position is exactly correct (no interpolation)
         SetEntityRotation(wheelObj, 0.0, initialRotation - totalRotation, 0.0, 1, true)
         
