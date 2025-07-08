@@ -2,6 +2,7 @@
 
 A **Lucky Wheel** script for the **Diamond Casino**. Inspired by the in-game casino feature, this version is tailored for servers running QB-Core and **Game Build 3407 (#DLC Agents of Sabotage)**.
 
+Love this project? Give it a star!
 ---
 
 ## Features
